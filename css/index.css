@@ -1,3 +1,9 @@
 #toggle-nav-item {
     padding: 7px;
 }
+
+#canvasDiv {
+    background-color: #ffffff;
+    width: 500px;
+    min-height: 500px;
+}
