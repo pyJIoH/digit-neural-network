@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="826a3cf4-75af-445b-b0ad-d087c5a90915" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\pyjioh\WebstormProjects\digit-neural-network\.idea\.name" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\pyjioh\WebstormProjects\digit-neural-network\.idea\digit-neural-network.iml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\pyjioh\WebstormProjects\digit-neural-network\.idea\misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\pyjioh\WebstormProjects\digit-neural-network\.idea\modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\pyjioh\WebstormProjects\digit-neural-network\.idea\vcs.xml" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\pyjioh\WebstormProjects\digit-neural-network\.idea\workspace.xml" afterPath="" />
     </list>
     <ignored path="untitled.iws" />
@@ -127,10 +122,6 @@
         <subPane subId="Project Files">
           <PATH>
             <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="digit-neural-network">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -283,7 +274,13 @@
       <option name="project" value="LOCAL" />
       <updated>1451322531412</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Remove unnecessary idea files">
+      <created>1451322621491</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1451322621491</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -326,7 +323,8 @@
     <MESSAGE value="Add index.js" />
     <MESSAGE value="Add painting ability" />
     <MESSAGE value="Add panel body" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add panel body" />
+    <MESSAGE value="Remove unnecessary idea files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove unnecessary idea files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
