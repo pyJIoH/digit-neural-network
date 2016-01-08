@@ -3,31 +3,33 @@
  */
 $(document).ready(function () {
 
-    canvasDrawing.width = $('#canvasDiv').width();
-    canvasDrawing.height = $('#canvasDiv').height();
-    var context = canvasDrawing.getContext("2d");
+    canvas.width = $('#canvasHolder').width();
+    canvas.height = $('#canvasHolder').height();
+    var context = canvas.getContext("2d");
 
-    $('#canvasDrawing').mousedown(function (e) {
-        var mouseX = e.pageX - this.offsetLeft;
-        var mouseY = e.pageY - this.offsetTop;
+    $('#canvas').mousedown(function (e) {
+        var parentOffset = $(this).parent().offset();
+        var mouseX = e.pageX - parentOffset.left;
+        var mouseY = e.pageY - parentOffset.top;
 
         paint = true;
-        addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
+        addClick(mouseX, mouseY);
         redraw();
     });
 
-    $('#canvasDrawing').mousemove(function (e) {
+    $('#canvas').mousemove(function (e) {
         if (paint) {
-            addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
+            var parentOffset = $(this).parent().offset();
+            addClick(e.pageX - parentOffset.left, e.pageY - parentOffset.top, true);
             redraw();
         }
     });
 
-    $('#canvasDrawing').mouseup(function (e) {
+    $('#canvas').mouseup(function (e) {
         paint = false;
     });
 
-    $('#canvasDrawing').mouseleave(function (e) {
+    $('#canvas').mouseleave(function (e) {
         paint = false;
     });
 
@@ -46,7 +48,7 @@ $(document).ready(function () {
         context.clearRect(0, 0, context.canvas.width, context.canvas.height); // Clears the canvas
 
         context.lineJoin = "round";
-        context.lineWidth = 6;
+        context.lineWidth = 10;
 
         for (var i = 0; i < clickX.length; i++) {
             context.beginPath();
