@@ -3,39 +3,53 @@
  */
 $(document).ready(function () {
 
-    canvas.width = $('#canvasHolder').width();
-    canvas.height = $('#canvasHolder').height();
+    canvas.width = $(canvasHolder).width();
+    canvas.height = $(canvasHolder).height();
     var context = canvas.getContext("2d");
+    init();
 
-    $('#canvas').mousedown(function (e) {
-        var parentOffset = $(this).parent().offset();
-        var mouseX = e.pageX - parentOffset.left;
-        var mouseY = e.pageY - parentOffset.top;
+    function getParentOffset() {
+        return $(this).parent().offset();
+    }
+
+    $(canvas).mousedown(function (e) {
+        var offset = getParentOffset.bind(this);
+        var mouseX = e.pageX - offset().left;
+        var mouseY = e.pageY - offset().top;
 
         paint = true;
         addClick(mouseX, mouseY);
         redraw();
     });
 
-    $('#canvas').mousemove(function (e) {
+    $(canvas).mousemove(function (e) {
         if (paint) {
-            var parentOffset = $(this).parent().offset();
-            addClick(e.pageX - parentOffset.left, e.pageY - parentOffset.top, true);
+            var offset = getParentOffset.bind(this);
+            addClick(e.pageX - offset().left, e.pageY - offset().top, true);
             redraw();
         }
     });
 
-    $('#canvas').mouseup(function (e) {
+    $(canvas).mouseup(function(e) {
         paint = false;
     });
 
-    $('#canvas').mouseleave(function (e) {
+    $(canvas).mouseleave(function(e) {
         paint = false;
     });
 
-    var clickX = new Array();
-    var clickY = new Array();
-    var clickDrag = new Array();
+    $(clearCanvas).click(function(e) {
+        init();
+    });
+
+    function init() {
+        context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+        clickX = [];
+        clickY = [];
+        clickDrag = [];
+    }
+
+    var clickX, clickY, clickDrag;
     var paint;
 
     function addClick(x, y, dragging) {
@@ -45,10 +59,10 @@ $(document).ready(function () {
     }
 
     function redraw() {
-        context.clearRect(0, 0, context.canvas.width, context.canvas.height); // Clears the canvas
+        context.clearRect(0, 0, context.canvas.width, context.canvas.height);
 
         context.lineJoin = "round";
-        context.lineWidth = 10;
+        context.lineWidth = 20;
 
         for (var i = 0; i < clickX.length; i++) {
             context.beginPath();
