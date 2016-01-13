@@ -6,7 +6,6 @@ $(document).ready(function () {
     canvas.width = $(canvasHolder).width();
     canvas.height = $(canvasHolder).height();
     var context = canvas.getContext("2d");
-    init();
 
     function getParentOffset() {
         return $(this).parent().offset();
@@ -30,26 +29,26 @@ $(document).ready(function () {
         }
     });
 
-    $(canvas).mouseup(function(e) {
+    $(canvas).mouseup(function (e) {
         paint = false;
     });
 
-    $(canvas).mouseleave(function(e) {
+    $(canvas).mouseleave(function (e) {
         paint = false;
     });
 
-    $(clearCanvas).click(function(e) {
-        init();
+    $(clearCanvas).click(function (e) {
+        clearAll();
     });
 
-    function init() {
+    function clearAll() {
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
         clickX = [];
         clickY = [];
         clickDrag = [];
     }
 
-    var clickX, clickY, clickDrag;
+    var clickX = [], clickY = [], clickDrag = [];
     var paint;
 
     function addClick(x, y, dragging) {
@@ -62,7 +61,7 @@ $(document).ready(function () {
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
 
         context.lineJoin = "round";
-        context.lineWidth = 20;
+        context.lineWidth = 30;
 
         for (var i = 0; i < clickX.length; i++) {
             context.beginPath();
