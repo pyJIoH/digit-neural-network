@@ -6,26 +6,28 @@ $(document).ready(function () {
     canvas.width = $(canvasHolder).width();
     canvas.height = $(canvasHolder).height();
     var context = canvas.getContext("2d");
+    context.lineJoin = "round";
+    context.lineWidth = 30;
+    var paint;
 
     function getParentOffset() {
         return $(this).parent().offset();
     }
 
     $(canvas).mousedown(function (e) {
+        paint = true;
         var offset = getParentOffset.bind(this);
         var mouseX = e.pageX - offset().left;
         var mouseY = e.pageY - offset().top;
-
-        paint = true;
-        addClick(mouseX, mouseY);
-        redraw();
+        draw(mouseX, mouseY);
     });
 
     $(canvas).mousemove(function (e) {
         if (paint) {
             var offset = getParentOffset.bind(this);
-            addClick(e.pageX - offset().left, e.pageY - offset().top, true);
-            redraw();
+            var mouseX = e.pageX - offset().left;
+            var mouseY = e.pageY - offset().top;
+            draw(mouseX, mouseY, true);
         }
     });
 
@@ -43,37 +45,14 @@ $(document).ready(function () {
 
     function clearAll() {
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-        clickX = [];
-        clickY = [];
-        clickDrag = [];
     }
 
-    var clickX = [], clickY = [], clickDrag = [];
-    var paint;
-
-    function addClick(x, y, dragging) {
-        clickX.push(x);
-        clickY.push(y);
-        clickDrag.push(dragging);
-    }
-
-    function redraw() {
-        context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-
-        context.lineJoin = "round";
-        context.lineWidth = 30;
-
-        for (var i = 0; i < clickX.length; i++) {
-            context.beginPath();
-            if (clickDrag[i] && i) {
-                context.moveTo(clickX[i - 1], clickY[i - 1]);
-            } else {
-                context.moveTo(clickX[i] - 1, clickY[i]);
-            }
-            context.lineTo(clickX[i], clickY[i]);
-            context.closePath();
-            context.stroke();
-        }
+    function draw(clickX, clickY) {
+        context.beginPath();
+        context.moveTo(clickX, clickY);
+        context.lineTo(clickX + 1, clickY);
+        context.closePath();
+        context.stroke();
     }
 
 });
