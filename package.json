@@ -1,0 +1,23 @@
+{
+  "name": "digit-neural-network",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "brain.js": "^0.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pyjioh/digit-neural-network.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pyjioh/digit-neural-network/issues"
+  },
+  "homepage": "https://github.com/pyjioh/digit-neural-network#readme"
+}
